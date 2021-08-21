@@ -1,4 +1,4 @@
-package com.andrew.hibernate;
+package com.andrew.hibernatetutorial;
 
 import java.util.Iterator;
 import java.util.List;
@@ -11,14 +11,12 @@ import org.hibernate.cfg.Configuration;
 
 public class ManageStudent {
 
-	private Integer addStudent(int id, String name, String rollNo,
-			String grade) {
+	private int addStudent(int id, String name, String rollNo, String grade) {
 		Integer newStudentId = -1;
 		Transaction transaction = null;
 		Student student = null;
 
-		try (SessionFactory sessionFactory = new Configuration().configure()
-				.buildSessionFactory();
+		try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 				Session session = sessionFactory.openSession()) {
 			transaction = session.beginTransaction();
 
@@ -48,13 +46,12 @@ public class ManageStudent {
 		Iterator<Student> iterator = null;
 		Student student = null;
 
-		try (SessionFactory sessionFactory = new Configuration().configure()
-				.buildSessionFactory();
+		try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 				Session session = sessionFactory.openSession()) {
 			transaction = session.beginTransaction();
 
-			List<Student> students = session
-					.createQuery("FROM Student", Student.class).getResultList();
+			List<Student> students = session.createQuery("FROM Student", Student.class)
+					.getResultList();
 
 			iterator = students.iterator();
 
@@ -69,13 +66,11 @@ public class ManageStudent {
 		}
 	}
 
-	public void updateStudent(int id, String name, String rollNo,
-			String grade) {
+	public void updateStudent(int id, String name, String rollNo, String grade) {
 		Transaction transaction = null;
 		Student student = null;
 
-		try (SessionFactory sessionFactory = new Configuration().configure()
-				.buildSessionFactory();
+		try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 				Session session = sessionFactory.openSession()) {
 			transaction = session.beginTransaction();
 
@@ -98,8 +93,7 @@ public class ManageStudent {
 		Transaction transaction = null;
 		Student student = null;
 
-		try (SessionFactory sessionFactory = new Configuration().configure()
-				.buildSessionFactory();
+		try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 				Session session = sessionFactory.openSession()) {
 			transaction = session.beginTransaction();
 
@@ -111,7 +105,6 @@ public class ManageStudent {
 		} catch (HibernateException hibernateException) {
 			hibernateException.printStackTrace();
 		}
-
 	}
 
 	public static void main(String[] args) {
@@ -119,7 +112,7 @@ public class ManageStudent {
 
 //		manageStudent.createStudents();
 //		manageStudent.updateStudent(1, "", "", "D");
-		manageStudent.deleteStudent(1);
+//		manageStudent.deleteStudent(1);
 		manageStudent.showStudents();
 	}
 }

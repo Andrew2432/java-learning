@@ -1,4 +1,4 @@
-package com.andrew.hibernate;
+package com.andrew.hibernatetutorial;
 
 import java.util.Iterator;
 import java.util.List;
@@ -14,8 +14,7 @@ public class ManageTeacher {
 
 	public ManageTeacher() {
 		try {
-			sessionFactory = new Configuration().configure()
-					.addAnnotatedClass(TeacherEntity.class)
+			sessionFactory = new Configuration().configure().addAnnotatedClass(TeacherEntity.class)
 					.buildSessionFactory();
 		} catch (HibernateException hibernateException) {
 			hibernateException.printStackTrace();
@@ -23,8 +22,7 @@ public class ManageTeacher {
 
 	}
 
-	private Integer addTeacher(int id, String name, String grade,
-			String subject) {
+	private int addTeacher(int id, String name, String grade, String subject) {
 		Integer newTeacherId = -1;
 		Transaction transaction = null;
 		TeacherEntity teacher = null;
@@ -59,8 +57,7 @@ public class ManageTeacher {
 			transaction = session.beginTransaction();
 
 			List<TeacherEntity> teachers = session
-					.createQuery("FROM TeacherEntity", TeacherEntity.class)
-					.getResultList();
+					.createQuery("FROM TeacherEntity", TeacherEntity.class).getResultList();
 
 			iterator = teachers.iterator();
 
@@ -75,8 +72,7 @@ public class ManageTeacher {
 		}
 	}
 
-	public void updateTeacher(int id, String name, String grade,
-			String subject) {
+	public void updateTeacher(int id, String name, String grade, String subject) {
 		Transaction transaction = null;
 		TeacherEntity teacher = null;
 
@@ -113,7 +109,6 @@ public class ManageTeacher {
 		} catch (HibernateException hibernateException) {
 			hibernateException.printStackTrace();
 		}
-
 	}
 
 	public static void main(String[] args) {

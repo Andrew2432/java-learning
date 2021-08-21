@@ -1,4 +1,4 @@
-package com.andrew.hibernate;
+package com.andrew.hibernatetutorial;
 
 /*
  A simple Plain Old Java Object (POJO) for modeling 

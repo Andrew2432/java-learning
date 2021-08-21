@@ -1,4 +1,4 @@
-package com.andrew.hibernate;
+package com.andrew.hibernatetutorial;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
